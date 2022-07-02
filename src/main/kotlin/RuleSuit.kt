@@ -1,8 +1,10 @@
 import kotlin.random.Random
 
-open class RuleSuit {
-    val pilihanSuit = arrayOf("Batu","Gunting","Kertas")
-    var status: String? = null
+class RuleSuit {
+    private val pilihanSuit = arrayOf("Batu","Gunting","Kertas")
+    private var status: String? = null
+    val pemainAI = pilihanSuit.random()
+
     fun rule(pemain1:String?, pemain2:String?){
         // 0: Batu      1: Gunting      2:Kertas
         if (
@@ -17,8 +19,10 @@ open class RuleSuit {
             { status = "Pemain 2 MENANG!" }
         else { status = "DRAW!"  }
     }
-    val pemainAI = pilihanSuit.random()
     fun result(){
-        println("\u001B[1m"+status)
+        println(status)
     }
+
+
+
 }
