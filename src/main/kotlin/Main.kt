@@ -1,21 +1,18 @@
 import kotlin.random.Random
 import kotlin.system.exitProcess
-
 class Main {
 }
-fun main (){
+fun main () {
     val gameBannerSuit = BannerSuit()
-    gameBannerSuit.createGameBannerSuit()
     val gameHandler = GameSuitHandler()
     val ruleGameSuit = RuleSuit()
-    gameHandler.gameMode()
 
     fun doAIMode() {
         gameHandler.inputSuitP1()
         val pemain1Input: Int? = readLine()?.toIntOrNull()
         val pemainAIInput: String = RuleSuit().pemainAI
 
-        val pemain1InputStr:String = (when (pemain1Input) {
+        val pemain1InputStr: String = (when (pemain1Input) {
             1 -> "Batu"
             2 -> "Gunting"
             3 -> "Kertas"
@@ -31,14 +28,15 @@ fun main (){
         println("Pemain 2 memilih $pemainAIInput")
         ruleGameSuit.result()
     }
-    fun doPlayerMode(){
+
+    fun doPlayerMode() {
 
         gameHandler.inputSuitP1()
         val pemain1Input: Int? = readLine()?.toIntOrNull()
         gameHandler.inputSuitP2()
         val pemain2Input: Int? = readLine()?.toIntOrNull()
 
-        val pemain1InputStr:String = (when (pemain1Input) {
+        val pemain1InputStr: String = (when (pemain1Input) {
             1 -> "Batu"
             2 -> "Gunting"
             3 -> "Kertas"
@@ -47,7 +45,7 @@ fun main (){
                 return doPlayerMode()
             }
         })
-        val pemain2InputStr:String = (when (pemain2Input) {
+        val pemain2InputStr: String = (when (pemain2Input) {
             1 -> "Batu"
             2 -> "Gunting"
             3 -> "Kertas"
@@ -63,33 +61,57 @@ fun main (){
         println("Pemain 2 memilih $pemain2InputStr")
         ruleGameSuit.result()
     }
-    fun doMainLagi(){
+
+    fun doMainLagi() {
         gameHandler.mainLagi()
-        val inputMainLagi:Int? = readLine()?.toIntOrNull()
-        if (inputMainLagi == 1){ return  main()}
-        else if (inputMainLagi == 2){System.exit(1)}
-        else {
+        val inputMainLagi: Int? = readLine()?.toIntOrNull()
+        if (inputMainLagi == 1) {
+            return main()
+        } else if (inputMainLagi == 2) {
+            System.exit(1)
+        } else {
             println("Input Salah")
             return doMainLagi()
         }
     }
 
+    gameBannerSuit.createGameBannerSuit()
+    gameHandler.gameMode()
+        val inputMode:String? = readLine()
+        if (inputMode.equals("satu",ignoreCase = true)){
+            val inputModeInt = 1
+            println(inputModeInt)
 
-    val inputMode = readLine()?.toIntOrNull()
-    gameHandler.pilihMode(inputMode)
+            gameHandler.pilihMode(inputModeInt)
+            doAIMode()
+            doMainLagi()
+        }
+        else if (inputMode == "1"){
+            val inputModeStr= "satu"
+            println(inputModeStr)
 
-    if (inputMode == 1) {
-        doAIMode()
-        doMainLagi()
+            gameHandler.pilihMode(inputModeStr)
+            doAIMode()
+            doMainLagi()
+        }
+        else if (inputMode.equals("dua",ignoreCase = true)|| inputMode == "2"){
+            val inputModeInt = 2
+            println(inputModeInt)
 
-    }
-    else if (inputMode == 2) {
-        doPlayerMode()
-        doMainLagi()
-    }
+            gameHandler.pilihMode(inputModeInt)
+            doPlayerMode()
+            doMainLagi()
+        }
+        else if (inputMode == "2"){
+            val inputModeStr= "dua"
+            println(inputModeStr)
 
+            gameHandler.pilihMode(inputModeStr)
+            doPlayerMode()
+            doMainLagi()
+        }
+        else{gameHandler.salahMode()}
 }
-
 
 class BannerSuit(){
     val borderGame:String = "=========================="
