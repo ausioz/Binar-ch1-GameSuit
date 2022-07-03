@@ -30,7 +30,6 @@ fun main () {
     }
 
     fun doPlayerMode() {
-
         gameHandler.inputSuitP1()
         val pemain1Input: Int? = readLine()?.toIntOrNull()
         gameHandler.inputSuitP2()
@@ -80,32 +79,24 @@ fun main () {
         val inputMode:String? = readLine()
         if (inputMode.equals("satu",ignoreCase = true)){
             val inputModeInt = 1
-            println(inputModeInt)
-
             gameHandler.pilihMode(inputModeInt)
             doAIMode()
             doMainLagi()
         }
         else if (inputMode == "1"){
             val inputModeStr= "satu"
-            println(inputModeStr)
-
             gameHandler.pilihMode(inputModeStr)
             doAIMode()
             doMainLagi()
         }
-        else if (inputMode.equals("dua",ignoreCase = true)|| inputMode == "2"){
+        else if (inputMode.equals("dua",ignoreCase = true)){
             val inputModeInt = 2
-            println(inputModeInt)
-
             gameHandler.pilihMode(inputModeInt)
             doPlayerMode()
             doMainLagi()
         }
         else if (inputMode == "2"){
             val inputModeStr= "dua"
-            println(inputModeStr)
-
             gameHandler.pilihMode(inputModeStr)
             doPlayerMode()
             doMainLagi()

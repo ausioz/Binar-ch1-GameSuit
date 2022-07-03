@@ -2,7 +2,7 @@ class GameSuitHandler:Handler{
 
     override fun gameMode() {
         println("Pilih mode game : \n1. vs AI \n2. vs Player 2")
-        print("Pilihan game mode (1/2): ")
+        print("Pilihan game mode (1/satu/2/dua): ")
     }
 
     override fun pilihMode(mode:Int?) {
